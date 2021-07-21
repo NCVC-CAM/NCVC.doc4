@@ -8,12 +8,12 @@
 つまりXY軸（下側）の動きをCAM1に、UV軸（上側）の動きをCAM2に作図します。
 抜け落ちても良いなら逆でもOKです。
 
-%\begin{figure}[H]
-%\centering
-%\includegraphics{No2/fig/sample2-crop.pdf}
-%\caption{上下異形状切削用のサンプル図形1}
-%\label{fig:sample2.pdf}
-%\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics{No2/fig/sample2-crop.pdf}
+\caption{上下異形状切削用のサンプル図形1}
+\label{fig:sample2.pdf}
+\end{figure}
 
 　もうだいたい想像できると思いますが、切削レイヤを2つに分けると自動的に上下異形状切削のデータが出力されます。
 基本的に上下の図形オブジェクト数を合わせれば、簡単に生成可能です。
@@ -31,12 +31,12 @@
 \subsection{上下で図形の数が違う場合　その1}
 　例えばXY軸が円でUV軸が四角形など、本当の意味で上下の形が違う（図形オブジェクトの数が違う）場合でも生成可能です。
 
-%\begin{figure}[H]
-%\centering
-%\includegraphics{No2/fig/sample3-crop.pdf}
-%\caption{上下異形状切削用のサンプル図形2}
-%\label{fig:sample3.pdf}
-%\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics{No2/fig/sample3-crop.pdf}
+\caption{上下異形状切削用のサンプル図形2}
+\label{fig:sample3.pdf}
+\end{figure}
 
 　シミュレーション結果をワイヤフレームで見てみましょう。
 図\ref{fig:simu3.png} のように微細線分の連続が生成され、望みの図形が切削されます。
@@ -63,23 +63,23 @@
 %\end{figure}
 \end{minipage}
 \begin{minipage}[t]{0.5\textwidth}
-%\begin{figure}[H]
-%\centering
-%\includegraphics{No2/fig/sample4-crop.pdf}
-%\caption{円の分割例}
-%\label{fig:sample4.pdf}
-%\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics{No2/fig/sample4-crop.pdf}
+\caption{円の分割例}
+\label{fig:sample4.pdf}
+\end{figure}
 \end{minipage}
 
 \subsection{上下で図形の数が違う場合　その2}
 　もう1つ切削事例を見てみましょう。
 
-%\begin{figure}[H]
-%\centering
-%\includegraphics{No2/fig/sample5-crop.pdf}
-%\caption{上下異形状切削用のサンプル図形3}
-%\label{fig:sample5.pdf}
-%\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics{No2/fig/sample5-crop.pdf}
+\caption{上下異形状切削用のサンプル図形3}
+\label{fig:sample5.pdf}
+\end{figure}
 
 　円弧も直線と同じく端点が開始位置なので、UV軸の図形データに均等に分割するには、点線部分で円弧を切断する必要があります。
 
@@ -100,12 +100,12 @@
 例えば図\ref{fig:sample6.pdf} のように外側の欠けた☆部分の線が余分で、このままではCAM1の図形データと均等割りができません。
 テーパ角度の単独ブロック指令を使えば簡単ですが、NCVCではテーパ角度の単独ブロック指令は生成されません（シミュレーションはサポートされています）。
 
-%\begin{figure}[H]
-%\centering
-%\includegraphics{No2/fig/sample6-crop.pdf}
-%\caption{一時停止による上下異形状切削の作図例}
-%\label{fig:sample6.pdf}
-%\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics{No2/fig/sample6-crop.pdf}
+\caption{一時停止による上下異形状切削の作図例1}
+\label{fig:sample6.pdf}
+\end{figure}
 
 　ようするに、不足する側の生成を一時停止させれば良いだけで、それを指示するのが「点」の図形です（点線は補助線）。
 一時停止の座標で点図形を作図して生成すると、図\ref{fig:simu5.png} のように望みどおりの加工が可能です。
@@ -113,23 +113,26 @@
 %\begin{figure}[H]
 %\centering
 %\includegraphics[scale=0.5]{No2/fig/simu5.png}
-%\caption{一時停止による上下異形状切削のシミュレーション結果}
+%\caption{一時停止による上下異形状切削のシミュレーション結果1}
 %\label{fig:simu5.png}
 %\end{figure}
 
 　XYとUVで過不足がなくても使えます。
-例えば図\ref{simu6.png} 左のようにXYデータにもUVデータにも一時停止点がある場合、軸が交互に動きますので、図１５右のような加工も可能です（この場合UVデータの下辺は分割されているので、実際にはCAM2の方が線が１本多い）。
+例えば図\ref{sample7.pdf} のようにXYデータにもUVデータにも一時停止点がある場合、
+軸が交互に動きますので、図\ref{fig:simu6.png} のような加工も可能です（この場合UVデータの下辺は分割されているので、実際にはCAM2の方が線が１本多い）。
+
+
+\begin{figure}[H]
+\centering
+\includegraphics{No2/fig/sample7-crop.pdf}
+\caption{一時停止による上下異形状切削の作図例2}
+\label{fig:sample7.pdf}
+\end{figure}
 
 %\begin{figure}[H]
-%\begin{minipage}[t]{0.4\textwidth}
-%\centering
-%\includegraphics{No2/fig/sample7-crop.pdf}
-%\end{minipage}
-%\begin{minipage}[b]{0.6\textwidth}
 %\centering
 %\includegraphics{No2/fig/simu6.png}
-%\end{minipage}
-%\caption{一時停止による上下異形状切削の作図例とシミュレーション結果}
+%\caption{一時停止による上下異形状切削のシミュレーション結果2}
 %\label{fig:simu6.png}
 %\end{figure}
 
@@ -137,18 +140,18 @@
 
 \subsection{開始位置の意図的操作による上下異形状切削}
 　最後の生成例として、はすば歯車（helical gear）のデータを生成してみます。
-図\ref{sample8-crop.pdf} は見た目は平歯車ですが、サンプルとして使用するために、同じ形状を2つのレイヤに作図しています。
+図\ref{sample8.pdf} は見た目は平歯車ですが、サンプルとして使用するために、同じ形状を2つのレイヤに作図しています。
 ホントはちゃんとひねり具合を計算して作図すべきところですが、さすが手抜き解説書！歯1枚分だけずらした「はすば歯車」を生成すると想定します。
 
-%\begin{figure}[H]
-%\centering
-%\includegraphics{No2/fig/sample6-crop.pdf}
-%\caption{歯車の作図例}
-%\label{fig:sample6.pdf}
-%\end{figure}
+\begin{figure}[H]
+\centering
+\includegraphics{No2/fig/sample8-crop.pdf}
+\caption{歯車の作図例}
+\label{fig:sample8.pdf}
+\end{figure}
 
 　NCVCで読ませて形状認識処理を実行します。
-このサンプルでは図形が重なってわかりにくいので、\menu{表示>レイヤ（Ctrl+L）} で他方のレイヤを非表示にし、その上で加工開始位置を設定してください。
+このサンプルでは図形が重なってわかりにくいので、\menu{表示>レイヤ}（\,\keys{Ctrl+L}\,） で他方のレイヤを非表示にし、その上で加工開始位置を設定してください。
 ついでに切削方向も指示します（例では反時計回り）。
 そこまでの処理が図\ref{fig:start1.png} です。
 
